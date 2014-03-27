@@ -25,4 +25,18 @@ public class Movie {
 	public String getTitle() {
 		return _title;
 	}
+
+	public double getCharge(Rental rental) {
+		double result = 0;
+		result = rental.getPriceCodeObject(getPriceCode()).getCharge(result,
+				rental);
+		return result;
+	}
+
+	public int getFrequentRenterPoints(int _daysRented) {
+		if ((getPriceCode() == Movie.NEW_RELEASE) && _daysRented > 1)
+			return 2;
+		else
+			return 1;
+	}
 }
